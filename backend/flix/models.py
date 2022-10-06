@@ -1,4 +1,5 @@
 from email.policy import default
+from tkinter import CASCADE
 from tokenize import blank_re
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -22,6 +23,6 @@ class Movie(models.Model):
     likes = models.PositiveBigIntegerField(blank=False, default=0)
 
 
-class favorites(models.Model):
-    movie = models.ForeignKey(Movie)
-    user = models.ForeignKey(User)
+class Favorites(models.Model):
+    movie = models.ForeignKey(Movie, on_delete=CASCADE, blank=False)
+    user = models.ForeignKey(User, on_delete=CASCADE, blank=False)
