@@ -1,14 +1,12 @@
 
-from tkinter import CASCADE
 
+import email
+from ssl import _PasswordType
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.contrib.auth import AbstractUser
 
 
 from django.core.validators import MinLengthValidator
-
-
-User = get_user_model()
 
 
 class Movie(models.Model):
@@ -25,6 +23,12 @@ class Movie(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title},{self.release_date},{self.duration},{self.likes} "
+
+
+class User(AbstractUser):
+    name = models.CharField(max_length=255, blank=False)
+    email = models.EmailField(max_length=255, blank=False)
+    password = models.CharField(max_length=255, blank=False)
 
 
 class Favorites(models.Model):
