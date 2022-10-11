@@ -15,7 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+MEDIA_ROOT = ''
+MEDIA_URL = ''
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -25,8 +26,13 @@ SECRET_KEY = 'django-insecure-k2h(3@symt!!8&wzdzsc!0nclcr*m7q9v0&tgu-dothfgq(zsp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "http://localhost:5173",
+    "127.0.0.1",
+    'localhost',
+]
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -34,6 +40,7 @@ INSTALLED_APPS = [
 
     'flix.apps.FlixConfig',
     'rest_framework',
+    'corsheaders',
 
 
 
@@ -46,6 +53,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
