@@ -33,6 +33,8 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+# per permettere al frontend di avere accesso ai cookie
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 

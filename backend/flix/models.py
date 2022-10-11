@@ -1,9 +1,6 @@
 
-
-import email
-from ssl import _PasswordType
 from django.db import models
-from django.contrib.auth import AbstractUser
+from django.contrib.auth.models import User
 
 
 from django.core.validators import MinLengthValidator
@@ -23,12 +20,6 @@ class Movie(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title},{self.release_date},{self.duration},{self.likes} "
-
-
-class User(AbstractUser):
-    name = models.CharField(max_length=255, blank=False)
-    email = models.EmailField(max_length=255, blank=False)
-    password = models.CharField(max_length=255, blank=False)
 
 
 class Favorites(models.Model):
